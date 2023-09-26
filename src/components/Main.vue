@@ -15,14 +15,14 @@ const activeConcept = ref("");
 const explanations = ref([]);
 
 const trueExp = ref("");
-const falseExp = ref([]);
 const finalObj = ref({});
 
 const answers = ref([]);
 
 const getConcept = (latestConcept) => {
   const newConcept = concepts.value[Math.ceil(Math.random()*(concepts.value.length-1))];
-  
+  activeConcept.value = "";
+
   if(newConcept === latestConcept) {
     getConcept(newConcept);
   } else {
@@ -32,6 +32,9 @@ const getConcept = (latestConcept) => {
 }
 
 const getExplanations = () => {
+  answers.value = [];
+  
+  explanations.value = [];
   explanations.value = shuffle([...getRandomElements(explanation.value, 4), info[activeConcept.value]]);
 
   finalObj.value = {};
@@ -42,9 +45,18 @@ const getExplanations = () => {
 
 function chceckAnswer(exp) {
   if(answers.value.includes(trueExp.value)) {
+    refresh();
     return;
+  } else {
+    answers.value.push(exp);
   }
-  answers.value.push(exp);
+}
+
+function refresh() {
+  setTimeout(() => {
+    getConcept(previousConcept.value);
+    getExplanations();
+  }, 2000)
 }
 
 onMounted(() => { getConcept(previousConcept.value); getExplanations(); });
