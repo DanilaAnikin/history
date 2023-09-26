@@ -56,7 +56,7 @@ function refresh() {
   setTimeout(() => {
     getConcept(previousConcept.value);
     getExplanations();
-  }, 2000)
+  }, 800)
 }
 
 onMounted(() => { getConcept(previousConcept.value); getExplanations(); });
