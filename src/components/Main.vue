@@ -50,15 +50,15 @@ function chceckAnswer(exp) {
 onMounted(() => { getConcept(previousConcept.value); getExplanations(); });
 </script>
 <template>
-  <div class="w-1/5">
-    <div class="w-full h-fit bg-slate-700 px-4 py-6 rounded-lg text-slate-200 justify-center flex text-lg">
+  <div class="w-1/5 whole-dev">
+    <div class="w-full h-fit bg-slate-800 px-4 py-6 rounded-lg text-slate-200 justify-center flex text-lg">
       {{ activeConcept }}
     </div>
-    <div class="w-full text-slate-200 mt-8">
+    <div class="w-full text-slate-200 mt-8 exps">
       <div
         v-for="exp in explanations"
         :key="exp"
-        class="px-4 py-2 my-3 rounded-md cursor-pointer"
+        class="px-4 py-2 my-3 rounded-md cursor-pointer exp"
         :class="answers.includes(exp) ? finalObj[exp] == true ? 'bg-green-600 cursor-default' : 'bg-red-700 cursor-default' : 'bg-slate-600 cursor-pointer'"
         @click="chceckAnswer(exp)"
         >
@@ -67,3 +67,18 @@ onMounted(() => { getConcept(previousConcept.value); getExplanations(); });
     </div>
   </div>
 </template>
+
+<style lang="scss">
+@media only screen and (max-width: 600px) {
+  .whole-dev {
+    width: 80%;
+  }
+  .exps {
+    margin-top: 15px;
+  }
+  .exp {
+    margin: 8px 0px;
+    padding: 4px 10px;
+  }
+}
+</style>
