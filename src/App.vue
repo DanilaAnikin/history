@@ -2,7 +2,7 @@
 import Main from './components/Main.vue';
 </script>
 <template>
-  <div class="flex justify-center container">
+  <div class="flex justify-center container mt-20">
     <Main />
   </div>
 </template>
