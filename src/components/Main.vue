@@ -73,12 +73,5 @@ onMounted(() => { getConcept(previousConcept.value); getExplanations(); });
   .whole-dev {
     width: 80%;
   }
-  .exps {
-    margin-top: 15px;
-  }
-  .exp {
-    margin: 8px 0px;
-    padding: 4px 10px;
-  }
 }
 </style>
