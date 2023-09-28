@@ -45,7 +45,6 @@ const getExplanations = () => {
 
 function chceckAnswer(exp) {
   if(answers.value.includes(trueExp.value)) {
-    refresh();
     return;
   } else {
     answers.value.push(exp);
@@ -56,7 +55,7 @@ function refresh() {
   setTimeout(() => {
     getConcept(previousConcept.value);
     getExplanations();
-  }, 800)
+  }, 300)
 }
 
 onMounted(() => { getConcept(previousConcept.value); getExplanations(); });
@@ -76,6 +75,11 @@ onMounted(() => { getConcept(previousConcept.value); getExplanations(); });
         >
         {{ exp }}
       </div>
+    </div>
+    <div class="flex justify-center">
+      <span v-if="answers.includes(trueExp)" class="text-slate-100 w-1/2 flex justify-center bg-green-800 rounded-md p-2 cursor-pointer" @click="refresh">
+        Next =>
+    </span>
     </div>
   </div>
 </template>
